@@ -19,13 +19,16 @@ $this->menu=array(
 <h1>View Personas #<?php echo $model->id_persona; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id_persona',
-		'cedula',
-		'rif',
-		'nombre',
-		'direccion',
-		'telefono',
-	),
-)); ?>
+		'data'=>$model,
+		'attributes'=>array(
+			'id_persona',
+			'cedula',
+			'rif',
+			'nombre',
+			'direccion',
+			'telefono',
+		),
+	)); 
+
+?>
+

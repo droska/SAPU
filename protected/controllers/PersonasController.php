@@ -122,8 +122,13 @@ class PersonasController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new Personas('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Personas']))
+			$model->attributes=$_GET['Personas'];
 		$dataProvider=new CActiveDataProvider('Personas');
 		$this->render('index',array(
+			'model'=>$model,
 			'dataProvider'=>$dataProvider,
 		));
 	}

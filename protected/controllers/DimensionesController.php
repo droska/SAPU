@@ -122,8 +122,13 @@ class DimensionesController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new Dimensiones('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Dimensiones']))
+			$model->attributes=$_GET['Dimensiones'];
 		$dataProvider=new CActiveDataProvider('Dimensiones');
 		$this->render('index',array(
+			'model'=>$model,
 			'dataProvider'=>$dataProvider,
 		));
 	}

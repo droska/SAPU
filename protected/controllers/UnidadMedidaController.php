@@ -122,8 +122,14 @@ class UnidadMedidaController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new UnidadMedida('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['UnidadMedida']))
+			$model->attributes=$_GET['UnidadMedida'];
+
 		$dataProvider=new CActiveDataProvider('UnidadMedida');
 		$this->render('index',array(
+			'model'=>$model,
 			'dataProvider'=>$dataProvider,
 		));
 	}

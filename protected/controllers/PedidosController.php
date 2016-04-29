@@ -122,8 +122,14 @@ class PedidosController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new Pedidos('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Pedidos']))
+			$model->attributes=$_GET['Pedidos'];
+
 		$dataProvider=new CActiveDataProvider('Pedidos');
 		$this->render('index',array(
+			'model'=>$model,
 			'dataProvider'=>$dataProvider,
 		));
 	}

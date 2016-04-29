@@ -21,30 +21,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pna_id_persona'); ?>
-		<?php
-		 echo $form->hiddenField($model,'pna_id_persona',array()); // Campo oculto para guardar el ID de la persona seleccionada
-		 $this->widget('zii.widgets.jui.CJuiAutoComplete',
-		   array(
-		    'name'=>'cedula', // Nombre para el campo de autocompletar
-		    'model'=>$model,
-		    'value'=>$model->isNewRecord ? '' : $model->personas->cedula,
-		    'source'=>$this->createUrl('usuarios/autocomplete'), // URL que genera el conjunto de datos
-		    'options'=> array(
-		      'showAnim'=>'fold',
-		      'size'=>'30',
-		      'minLength'=>'1', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
-		      'select'=>"js:function(event, ui) { 
-		       $('#Pedidos_pna_id_persona').val(ui.item.id); // HTML-Id del campo
-		       }"
-		      ),
-		    'htmlOptions'=> array(
-		     'size'=>60,
-		     'placeholder'=>'Buscar persona por cedula...',
-		     'title'=>'Indique la persona por su cedula.'
-		     ),
-		   ));  
-		 ?>
- <?php echo $form->error($model,'pna_id_persona'); ?>
+		<?php echo $form->dropDownList($model, 'pna_id_persona', Personas::items(0)); ?>
+		 <?php echo $form->error($model,'pna_id_persona'); ?>
 	</div>
 	<div class="row">
 
